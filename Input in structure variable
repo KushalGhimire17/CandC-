@@ -1,6 +1,4 @@
-//Structures
 #include <stdio.h>
-#include <string.h>
 
 //structure define
 struct employee
@@ -11,38 +9,63 @@ struct employee
     float salary;
 };
 typedef struct employee employee;
+
+employee input();
+void display(employee);
+void update_salary(employee*);
+
 int main()
 {
-
-    //structure variable declare
+    //variable declare
     employee emp1, emp2;
-    char c;
-    
-    //structure variable initialize
-    employee emp3 = {"GHIJ KLMN", 3, 55.55};
-    
-
-    //structure variable assign
-    //accessing structure member using dot(.) operator
-    emp1.id = 1;
-    strcpy(emp1.name, "Kushal Ghimire");
-    emp1.salary = 2200.44;
 
     //user input
-    printf("\nEnter employee id: ");
-    scanf("%d", &emp2.id);
-    printf("\nEnter employee salary: ");
-    scanf("%f", &emp2.salary);
-
-    while(c = getchar() != '\n'){}
-
-    printf("\nEnter employee name: ");
-    scanf("%[^\n]s", emp2.name);
+    printf("\nEmployee 1\n");
+    emp1 = input();
+    printf("\nEmployee 2\n");
+    emp2 = input();
 
     //output
-    printf("\nID: %d \t NAME: %s \t SALARY: %.2f", emp1.id, emp1.name, emp1.salary);
-    printf("\nID: %d \t NAME: %s \t SALARY: %.2f", emp2.id, emp2.name, emp2.salary);
-    printf("\nID: %d \t NAME: %s \t SALARY: %.2f", emp3.id, emp3.name, emp3.salary);
+    printf("\nEmployee 1 data\n");
+    display(emp1);
+    printf("\nEmployee 2 data\n");
+    display(emp2);
 
+    //processing
+    update_salary(&emp1);
+    update_salary(&emp2);
+
+    //output
+    printf("\nEmployee 1 data\n");
+    display(emp1);
+    printf("\nEmployee 2 data\n");
+    display(emp2);
     return 0;
+}
+
+employee input()
+{
+    char c;
+    employee emp;
+    printf("\nEnter ID: ");
+    scanf("%d", &emp.id);
+    while(c = getchar() != '\n'){}
+    printf("\nEnter NAME: ");
+    scanf("%[^\n]s", emp.name);
+    printf("\nEnter SALARY: ");
+    scanf("%f", &emp.salary);
+
+    return emp;
+}
+
+void display(employee emp)
+{
+    printf("\nID: %d \t NAME: %s \t SALARY: %.2f", emp.id, emp.name, emp.salary);
+}
+
+
+void update_salary(employee* emp)
+{
+    if(emp->salary <= 10000)
+        emp->salary = emp->salary *10;
 }
