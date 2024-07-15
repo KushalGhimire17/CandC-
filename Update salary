@@ -1,0 +1,70 @@
+#include <stdio.h>
+
+//structure define
+struct employee
+{
+    //structure data member
+    char name[50];
+    int id;
+    float salary;
+};
+typedef struct employee employee;
+
+employee input();
+void display(employee);
+void update_salary(employee*);
+
+int main()
+{
+    //variable declare
+    employee emp1, emp2;
+
+    //user input
+    printf("\nEmployee 1\n");
+    emp1 = input();
+    printf("\nEmployee 2\n");
+    emp2 = input();
+
+    //output
+    printf("\nEmployee 1 data\n");
+    display(emp1);
+    printf("\nEmployee 2 data\n");
+    display(emp2);
+    
+    //processing
+    update_salary(&emp1);
+    update_salary(&emp2);
+    
+    //output
+    printf("\nEmployee 1 data\n");
+    display(emp1);
+    printf("\nEmployee 2 data\n");
+    display(emp2);
+    return 0;
+}
+
+employee input()
+{
+    char c;
+    employee emp;
+    printf("\nEnter ID: ");
+    scanf("%d", &emp.id);
+    while(c = getchar() != '\n'){}
+    printf("\nEnter NAME: ");
+    scanf("%[^\n]s", emp.name);
+    printf("\nEnter SALARY: ");
+    scanf("%f", &emp.salary);
+
+    return emp;
+}
+
+void display(employee emp)
+{
+    printf("\nID: %d \t NAME: %s \t SALARY: %.2f", emp.id, emp.name, emp.salary);
+}
+
+
+void update_salary(employee* emp)
+{
+    
+}
