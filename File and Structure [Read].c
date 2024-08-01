@@ -27,10 +27,10 @@ int main()
 
     employee emp1, emp2;
 
-    printf("\Reading emp1 records to the file\n");
+    printf("\nReading emp1 records to the file\n");
     fread(&emp1, sizeof(employee), 1, fptr);
 
-    printf("\Reading emp2 records to the file\n");
+    printf("\nReading emp2 records to the file\n");
     fread(&emp2, sizeof(employee), 1, fptr);
 
     printf("\nReading employee records to the file is completed successfully\n");
