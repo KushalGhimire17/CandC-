@@ -10,6 +10,7 @@ struct employee
 typedef struct employee employee;
 
 void input(employee*);
+void display(employee);
 int i;
 
 int main()
